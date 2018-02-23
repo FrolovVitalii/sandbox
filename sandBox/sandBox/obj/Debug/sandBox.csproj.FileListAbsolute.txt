@@ -1,0 +1,14 @@
+D:\c#\Tests\sandBox\sandBox\obj\Debug\sandBox.csprojResolveAssemblyReference.cache
+D:\c#\Tests\sandBox\sandBox\obj\Debug\sandBox.csproj.CoreCompileInputs.cache
+D:\c#\Tests\sandBox\sandBox\bin\Debug\sandBox.exe.config
+D:\c#\Tests\sandBox\sandBox\bin\Debug\sandBox.exe
+D:\c#\Tests\sandBox\sandBox\bin\Debug\sandBox.pdb
+D:\c#\Tests\sandBox\sandBox\obj\Debug\sandBox.exe
+D:\c#\Tests\sandBox\sandBox\obj\Debug\sandBox.pdb
+D:\c#\MentoringProgram\sandBox\sandBox\bin\Debug\sandBox.exe.config
+D:\c#\MentoringProgram\sandBox\sandBox\bin\Debug\sandBox.exe
+D:\c#\MentoringProgram\sandBox\sandBox\bin\Debug\sandBox.pdb
+D:\c#\MentoringProgram\sandBox\sandBox\obj\Debug\sandBox.csprojResolveAssemblyReference.cache
+D:\c#\MentoringProgram\sandBox\sandBox\obj\Debug\sandBox.csproj.CoreCompileInputs.cache
+D:\c#\MentoringProgram\sandBox\sandBox\obj\Debug\sandBox.exe
+D:\c#\MentoringProgram\sandBox\sandBox\obj\Debug\sandBox.pdb
