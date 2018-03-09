@@ -162,11 +162,8 @@ namespace Sendbox
 
             Console.WriteLine(" b) Task Loops: foreach");
 
-            foreach (var item in dictionary)
-            {
-                Console.WriteLine($"Item with key : {item.Key} equals: {item.Value}");
-            }
-
+            LoopTask.PrintDictionaryViaForeach(dictionary);
+            
             Console.WriteLine(new string('*', 20));
 
             #endregion
@@ -175,21 +172,7 @@ namespace Sendbox
 
             Console.WriteLine(" c) Task Loops: while / do while");
 
-            // Array of our strings.
-            string[] ArrayOfString = { "ololo", "ol", "lol", "olololo", "hello", "world" };
-
-            Console.WriteLine("Array of our strings:");
-
-            foreach (var element in ArrayOfString)
-            {
-                Console.WriteLine($"Element: {element}");
-            }
-
-            Console.WriteLine();
-
-            Console.WriteLine("Result of our method GetAndRemoveItemsFromConcurrentBag:");
-
-            LoopTask.GetItemsFromConcurrentBag(ArrayOfString);
+            LoopTask.GetItemsFromConcurrentBag();
 
             Console.WriteLine(new string('*', 20));
 

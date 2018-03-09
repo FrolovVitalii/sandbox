@@ -6,78 +6,79 @@ namespace FirstSprint
     class TaskFunctions
     {
 
-        private int flag = 0;
-        private int valueFlag = 0;
-        private string[] InitialValueArray;
-        private string[] ComparisonValueArray;
-
-        public int CompareVersions(string InitialValue, string ComparisonValue)
+        private int TemporaryResult(int firstIndexOfArray, string[] inputArray)
         {
-            if (InitialValue.Contains("."))
+            int result = 0;
+
+            for (int i = firstIndexOfArray; i < inputArray.Length; i++)
             {
-
-                InitialValueArray = InitialValue.Split('.');
-
-                int minLengthArray = InitialValueArray.Length;
-
-                ComparisonValueArray = ComparisonValue.Split('.');
-
-                if (minLengthArray >= ComparisonValueArray.Length)
+                if (int.Parse(inputArray[i]) > 0)
                 {
-                    minLengthArray = ComparisonValueArray.Length;
-                    valueFlag = 1;
+                    result = 1;
+                    break;
                 }
 
+            }
+
+            return result;
+        }
+
+
+        public int CompareVersions(string initialValue, string comparisonValue)
+        {
+            int result = 0;
+            bool flag = false;
+            string[] initialValueArray;
+            string[] comparisonValueArray;
+
+
+            if (initialValue.Contains("."))
+            {
+
+                initialValueArray = initialValue.Split('.');
+                int minLengthArray = initialValueArray.Length;
+                comparisonValueArray = comparisonValue.Split('.');
+
+
+                if (minLengthArray >= comparisonValueArray.Length)
+                {
+                    minLengthArray = comparisonValueArray.Length;
+                    flag = true;
+                }
 
 
                 for (int i = 0; i < minLengthArray; i++)
                 {
-                    if (int.Parse(InitialValueArray[i]) > int.Parse(ComparisonValueArray[i]))
+                    if (int.Parse(initialValueArray[i]) > int.Parse(comparisonValueArray[i]))
                     {
-                        flag = 1;
+                        result = 1;
                         break;
                     }
-                    else if (int.Parse(InitialValueArray[i]) < int.Parse(ComparisonValueArray[i]))
+                    else if (int.Parse(initialValueArray[i]) < int.Parse(comparisonValueArray[i]))
                     {
-                        flag = -1;
+                        result = -1;
                         break;
                     }
 
                 }
 
 
-                if (flag == 0)
+                if (result == 0)
                 {
-                    if (valueFlag == 0)
+                    if (flag == false)
                     {
-                        for (int i = minLengthArray; i < ComparisonValueArray.Length; i++)
-                        {
-                            if (int.Parse(ComparisonValueArray[i]) > 0)
-                            {
-                                flag = -1;
-                                break;
-                            }
-
-                        }
+                        result = -1 * TemporaryResult(minLengthArray, comparisonValueArray);
                     }
                     else
                     {
-                        for (int i = minLengthArray; i < InitialValueArray.Length; i++)
-                        {
-                            if (int.Parse(InitialValueArray[i]) > 0)
-                            {
-                                flag = 1;
-                                break;
-                            }
-
-                        }
+                        result = TemporaryResult(minLengthArray, initialValueArray);
                     }
 
                 }
             }
 
 
-            return flag;
+            return result;
         }
     }
 }
