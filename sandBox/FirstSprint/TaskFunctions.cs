@@ -27,7 +27,7 @@ namespace FirstSprint
         public int CompareVersions(string initialValue, string comparisonValue)
         {
             int result = 0;
-            bool flag = false;
+            bool temporaryFlag = false;
             string[] initialValueArray;
             string[] comparisonValueArray;
 
@@ -43,7 +43,7 @@ namespace FirstSprint
                 if (minLengthArray >= comparisonValueArray.Length)
                 {
                     minLengthArray = comparisonValueArray.Length;
-                    flag = true;
+                    temporaryFlag = true;
                 }
 
 
@@ -65,7 +65,7 @@ namespace FirstSprint
 
                 if (result == 0)
                 {
-                    if (flag == false)
+                    if (temporaryFlag == false)
                     {
                         result = -1 * TemporaryResult(minLengthArray, comparisonValueArray);
                     }

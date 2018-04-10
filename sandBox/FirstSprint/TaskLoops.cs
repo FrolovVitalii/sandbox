@@ -8,26 +8,24 @@ namespace FirstSprint
 {
     class TaskLoops
     {
+
+        public string GetRandomString(int length)
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         private string[] GetRandomStringArray()
         {
             int counter = 0;
-            string alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
             List<string> array = new List<string>();
             Random random = new Random();
 
-
-            while (counter <= random.Next(5,100))
+            while (counter <= random.Next(5, 15))
             {
-                StringBuilder sb = new StringBuilder(random.Next(2, 30) - 1);
-                int position = 0;
-
-                for (int i = 0; i < random.Next(2, 30); i++)
-                {
-                    position = random.Next(0, alphabet.Length - 1);
-                    sb.Append(alphabet[position]);
-                }
-
-                array.Add(sb.ToString());
+                array.Add(GetRandomString(random.Next(1, 20)));
                 counter++;
             }
 
@@ -39,9 +37,9 @@ namespace FirstSprint
         {
             Dictionary<int, string> dictionary = new Dictionary<int, string>();
 
-            dictionary.Add(0, inputStringArray[0]);
+            //dictionary.Add(0, inputStringArray[0]);
 
-            for (int i = 1; i < inputStringArray.Length; i++)
+            for (int i = 0; i < inputStringArray.Length; i++)
             {
                 if (!dictionary.ContainsValue(inputStringArray[i]))
                 {
@@ -86,7 +84,7 @@ namespace FirstSprint
 
 
             while (instance.Count > 0)
-            {                
+            {
                 if (instance.TryTake(out string element))
                 {
                     Console.WriteLine($"Element: {element}");

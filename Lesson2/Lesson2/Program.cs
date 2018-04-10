@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lesson2
 {
-    class Program
+
+   
+
+    class Program 
     {
 
 
@@ -43,6 +46,7 @@ namespace Lesson2
                 Console.Write(item + " :: ");
             }
 
+            
 
             Console.WriteLine();
             Console.WriteLine();
