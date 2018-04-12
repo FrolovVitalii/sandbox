@@ -52,11 +52,13 @@ namespace Lesson4_4
 
             foreach (DataRow row in fruits.Rows)
             {
-                if (row["Color"].ToString() == inputColor)
+                if (row["Color"].ToString().ToLower() == inputColor.ToLower())
                 {
-                    Console.WriteLine(row["Name"]);
+                    Console.WriteLine($"{row["Name"]} - {row["Color"]}");
                 }
             }
+
+
         }
     }
 }

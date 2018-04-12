@@ -25,7 +25,6 @@ namespace Lesson4_5
                 else
                 {
                     Console.WriteLine("Error. Incorrect password!");
-                    Console.WriteLine(@"If you need to stop, please, input word:  stop");
                 }
             }
 
