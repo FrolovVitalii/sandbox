@@ -76,9 +76,6 @@ namespace Lesson4_1
 
             ConsoleWriteArray(items);
 
-#if DEBUG
-            Console.ReadKey();
-#endif
         }
     }
 }

@@ -35,10 +35,6 @@ namespace Lesson4_2
                 Console.WriteLine($"SumUsingLinq = {sumUsingLinq}");
             }
 
-#if DEBUG
-            Console.ReadKey();
-#endif
-
         }
     }
 }

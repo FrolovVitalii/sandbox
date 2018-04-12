@@ -21,12 +21,9 @@ namespace Lesson4_6
             {
                 if (item <= 71)
                     Console.Write(item + " ");
+                else
+                    break;
             }
-
-
-#if DEBUG
-            Console.ReadKey();
-#endif
         }
     }
 }

@@ -26,9 +26,6 @@ namespace Lesson4_3
                 Console.WriteLine($"Sum = {sum}");
             }
 
-#if DEBUG
-            Console.ReadKey();
-#endif
         }
     }
 }

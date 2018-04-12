@@ -1,41 +1,62 @@
 ﻿/*
    Write program to prompt the user to choose the correct answer from a list. The user can choose to continue answering the question or stop answering it.
+   Input data was changed. You need to write the color of fruit and you will get fruits from API. 
 */
 using System;
-
+using System.Net.Http;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Data;
 
 namespace Lesson4_4
 {
     class Program
     {
-        enum Color { Red = 1, Green, Yellow, Blue, Purple };
+        private static string jsonFrutUrl = "http://5accf7c394587a0014eda8c9.mockapi.io/fruits";
+        private static string responseString;
+        private static DataTable fruits = null;
+        private static string inputColor;
+        static DataTable GetAndDeserialiseJsonFruits(string urlPath)
+        {
+            DataTable dataTable = null;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(urlPath);
+                Task<string> t = client.GetStringAsync(client.BaseAddress);
+                responseString = t.Result;
+                DataSet dataSet = JsonConvert.DeserializeObject<DataSet>(responseString);
+                dataTable = dataSet.Tables["Fruits"];
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" ERROR! " + ex.Message);
+            }
+
+            return dataTable;
+        }
+
 
         static void Main(string[] args)
         {
-            Console.WriteLine("What is the color of Banana?");
-            Console.WriteLine("Where:");
-            Console.WriteLine($"Color {Color.Red}  number {(int)Color.Red}");
-            Console.WriteLine($"Color {Color.Green} number {(int)Color.Green}");
-            Console.WriteLine($"Color {Color.Yellow} number {(int)Color.Yellow}");
-            Console.WriteLine($"Color {Color.Blue} number {(int)Color.Blue}");
-            Console.WriteLine($"Color {Color.Purple} number {(int)Color.Purple}");
-            Console.WriteLine("Input the number of color:");
-            Console.WriteLine("If You want to stop this quiz, please, input 0.");
+            fruits = GetAndDeserialiseJsonFruits(jsonFrutUrl);
 
-            while (true)
+            Console.WriteLine("Please, input fruit color: ");
+            Console.WriteLine("For example: Red");
+            inputColor = Console.ReadLine();
+
+
+            foreach (DataRow row in fruits.Rows)
             {
-
-                Console.WriteLine("Please, input value: ");
-                if (int.TryParse(Console.ReadLine(), out int inputValue))
+                if (row["Color"].ToString() == inputColor)
                 {
-                    Console.WriteLine($" Your choice is {inputValue} ");
-
-                    if ((inputValue == (int)Color.Yellow) || inputValue == 0)
-                        break;
+                    Console.WriteLine(row["Name"]);
                 }
             }
-
-
         }
     }
 }

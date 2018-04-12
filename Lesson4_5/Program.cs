@@ -29,10 +29,6 @@ namespace Lesson4_5
                 }
             }
 
-#if DEBUG
-            Console.ReadKey();
-#endif
-
         }
     }
 }
