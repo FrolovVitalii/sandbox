@@ -10,10 +10,33 @@ using System;
 using System.Linq;
 
 namespace Lesson4_1
-
 {
-    class Program
+
+    static class Program
     {
+
+        static void ConsoleWriteArray(this string[] array)
+        {
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
+        static void CosoleWriteArrayWithoutTemlate(this string[] array, string template)
+        {
+            foreach (var item in array)
+            {
+                if (!item.ToLower().Contains(template))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+        }
+
+
+
         static void Main(string[] args)
         {
 
@@ -23,56 +46,39 @@ namespace Lesson4_1
             Console.WriteLine("Our current array:");
             Console.WriteLine();
 
-            foreach (var item in array)
-            {
-                Console.WriteLine(item);
-            }
+            ConsoleWriteArray(array);
 
             Console.WriteLine();
             Console.WriteLine("Our current array for optional task:");
             Console.WriteLine();
 
-            foreach (var item in arrayOptionalTask)
-            {
-                Console.WriteLine(item);
-            }
+            ConsoleWriteArray(arrayOptionalTask);
 
             Console.WriteLine();
             Console.WriteLine("Value which are not contains ap:");
             Console.WriteLine();
 
-            foreach (var item in array)
-            {
-                if (!item.Contains("ap"))
-                    Console.WriteLine(item);
-            }
+            CosoleWriteArrayWithoutTemlate(array, "ap");
 
             Console.WriteLine();
             Console.WriteLine("Value which are not contains ap for optional task:");
             Console.WriteLine();
 
-
-
-            foreach (var item in arrayOptionalTask)
-            {
-                if (!item.ToLower().Contains("ap"))
-                    Console.WriteLine(item);
-            }
-
+            arrayOptionalTask.CosoleWriteArrayWithoutTemlate("ap");
 
             Console.WriteLine();
             Console.WriteLine("Value which are not contains ap (Using Linq):");
             Console.WriteLine();
 
             var items = array
-                         .Where(s => !s.ToLower().Contains("ap"));
+                         .Where(s => !s.ToLower().Contains("ap"))
+                         .ToArray();
 
-            foreach (var item in items)
-            {
-                Console.WriteLine(item);
-            }
+            ConsoleWriteArray(items);
 
+#if DEBUG
             Console.ReadKey();
+#endif
         }
     }
 }

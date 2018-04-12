@@ -2,6 +2,7 @@
 Write a program to display n terms of natural number and their sum.
 */
 using System;
+using System.Linq;
 
 namespace Lesson4_3
 {
@@ -9,7 +10,6 @@ namespace Lesson4_3
     {
         static void Main(string[] args)
         {
-            int sum = 0;
 
             Console.WriteLine("Please, input n value: ");
             Console.WriteLine();
@@ -18,17 +18,17 @@ namespace Lesson4_3
             {
                 Console.WriteLine();
 
-                for (int i = 0; i <= inputValue; i++)
-                {
-                    sum += i;
-                    Console.Write(i + " ");
-                }
+                int sum = Enumerable
+                                       .Range(1, inputValue)
+                                       .Aggregate((s, next) => s + next);
 
                 Console.WriteLine();
                 Console.WriteLine($"Sum = {sum}");
             }
 
+#if DEBUG
             Console.ReadKey();
+#endif
         }
     }
 }

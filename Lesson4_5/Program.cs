@@ -17,19 +17,10 @@ namespace Lesson4_5
             {
                 Console.WriteLine("Enter password: ");
                 var enteredPassword = Console.ReadLine();
-                if (enteredPassword == password || enteredPassword == "stop")
+                if (enteredPassword == password)
                 {
-                    if (enteredPassword == "stop")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your password is correct.");
-                        Thread.Sleep(1500);
-                        break;
-                    }
-
+                    Console.WriteLine("Your password is correct.");
+                    break;
                 }
                 else
                 {
@@ -37,6 +28,10 @@ namespace Lesson4_5
                     Console.WriteLine(@"If you need to stop, please, input word:  stop");
                 }
             }
+
+#if DEBUG
+            Console.ReadKey();
+#endif
 
         }
     }
