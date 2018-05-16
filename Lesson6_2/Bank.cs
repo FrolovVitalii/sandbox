@@ -32,7 +32,7 @@ namespace Lesson6_2
                 }
                 else
                 {
-                    throw new Exception("Error! You haven't enough money in your account. "); 
+                    throw new Exception("Error! You don't have enough money in your account. "); 
                 }
             }
 
