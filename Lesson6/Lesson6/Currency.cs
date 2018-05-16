@@ -1,37 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson6
 {
     class Currency
     {
-        private readonly int Dollars;
-        private readonly int Cents;
+        private readonly int dollars;
+        private readonly int cents;
         private double money;
 
-        public Currency(int dollars, int cents)
+        public Currency()
         {
-            this.Dollars = dollars;
-            this.Cents = cents;
-            this.money = double.Parse($"{dollars}.{cents}");
+            dollars = 0;
+            cents = 0;
+            money = 0;
         }
+
+        public Currency(int dollars, int cents)
+           : this(double.Parse($"{dollars}.{cents}"))
+        {
+
+        }
+
+        public Currency(double money)
+        {
+            this.money = money;
+        }
+
 
         public double ToDoublel()
         {
-            return this.money;
+            return money;
         }
 
         public Currency Add(Currency currency)
         {
-            return new Currency(this.Dollars + currency.Dollars, this.Cents + currency.Cents);
+            return new Currency(money + currency.money);
         }
 
         public Currency Multiply(int multiplier)
         {
-            return new Currency(this.Dollars * multiplier, this.Cents * multiplier);
+            return new Currency(money * multiplier);
         }
 
         public override string ToString()

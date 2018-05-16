@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Lesson6_3
 {
-    class FileLogger : Ilogger
+    class FileLogger : ILogger
     {
         List<string> logCollection = new List<string>();
-        public void OutputTheLog(string text)
+        public void Log(string text)
         {
             logCollection.Add(text);
             string mydocpath = Directory.GetCurrentDirectory();

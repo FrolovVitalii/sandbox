@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson6_3
 {
-    class ConsoleLogger : Ilogger
+    class ConsoleLogger : ILogger
     {
-        public void OutputTheLog(string text)
+        public void Log(string text)
         {
             Console.WriteLine(text);
         }

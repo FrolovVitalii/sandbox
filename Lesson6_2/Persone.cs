@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Lesson6_2
 {
-    class Persone : IHasId
+    class Person : IHasId
     {
 
         public string Name { get; set; }
@@ -15,11 +14,18 @@ namespace Lesson6_2
 
         public string Id { get; }
 
-        public Persone(string name, int age)
+        public Person(string name, int age)
         {
             Age = age;
             Name = name;
-            Id = name+age.ToString()+IdCreation();
+            Id = name + age.ToString() + IdCreation();
+        }
+
+        public Person(string name, int age, string id)
+        {
+            Age = age;
+            Name = name;
+            this.Id = id;
         }
 
         private string IdCreation()

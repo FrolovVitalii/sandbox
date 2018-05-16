@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 
 namespace Lesson6_3
 {
-    class AggregateLogger : Ilogger
+    class AggregateLogger : ILogger
     {
-        private List<Ilogger> aggregateLogCollection;
+        private List<ILogger> aggregateLogCollection = new List<ILogger>();
 
-        public AggregateLogger(List<Ilogger> loggers)
+        public AggregateLogger(params ILogger[] loggers)
         {
-            aggregateLogCollection = loggers;
+            aggregateLogCollection = new List<ILogger>(loggers);
         }
 
-        public void OutputTheLog(string text)
+        public void Log(string text)
         {
 
             {
                 foreach (var item in aggregateLogCollection)
                 {
-                    item.OutputTheLog(text);
+                    item.Log(text);
                 }
 
             }

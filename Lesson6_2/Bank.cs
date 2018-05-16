@@ -13,8 +13,7 @@ namespace Lesson6_2
         {
             if (accountMoney.ContainsKey(accountHolder.Id))
             {
-                accountInformation.Add(accountHolder.Id, quantity.ToString());
-                accountMoney[accountHolder.Id] += quantity;
+                Operations(quantity, accountHolder, "PutMoney");
             }
             else
             {
@@ -29,12 +28,11 @@ namespace Lesson6_2
             {
                 if (GetAccountBalance(accountHolder) >= quantity)
                 {
-                    accountInformation.Add(accountHolder.Id, (-1 * quantity).ToString());
-                    accountMoney[accountHolder.Id] -= quantity;
+                    Operations(quantity, accountHolder, "GetMoney");
                 }
                 else
                 {
-                    Console.WriteLine("You haven't enough money in your account. ");
+                    throw new Exception("Error! You haven't enough money in your account. "); 
                 }
             }
 
@@ -42,12 +40,12 @@ namespace Lesson6_2
 
         public int GetAccountBalance(IHasId accountHolder)
         {
-            int balanse = 0;
-            if (accountMoney.ContainsKey(accountHolder.Id))
+
+            if (!accountMoney.ContainsKey(accountHolder.Id))
             {
-                balanse = accountMoney[accountHolder.Id];
+                throw new Exception($"Error! Account with id: {accountHolder.Id} does not exist.");
             }
-            return balanse;
+            return accountMoney[accountHolder.Id];
         }
 
         public void GetAllTransactionsByAccount(IHasId accountHolder)
@@ -58,5 +56,25 @@ namespace Lesson6_2
                     Console.WriteLine(s);
             }
         }
+
+        private void Operations(int quantity, IHasId accountHolder, string operation)
+        {
+            if (quantity > 0)
+            {
+                if (operation == "PutMoney")
+                {
+                    accountInformation.Add(accountHolder.Id, quantity.ToString());
+                    accountMoney[accountHolder.Id] += quantity;
+                }
+                else if (operation == "GetMoney")
+                {
+                    accountInformation.Add(accountHolder.Id, (-1 * quantity).ToString());
+                    accountMoney[accountHolder.Id] -= quantity;
+                }
+                else throw new Exception("Error! Operation impossible.");
+
+            }
+        }
+
     }
 }

@@ -7,7 +7,6 @@ can be found here: https://msdn.microsoft.com/en-us/library/6ka1wd3w(v=vs.110).a
 */
 #endregion
 using System;
-using System.Collections.Generic;
 
 
 namespace Lesson6_3
@@ -16,21 +15,10 @@ namespace Lesson6_3
     {
         static void Main(string[] args)
         {
-            List<Ilogger> aggregateCollectionLoger = new List<Ilogger>();
-
-            ConsoleLogger testConsoleLogger = new ConsoleLogger();
-            testConsoleLogger.OutputTheLog("console log");
-            aggregateCollectionLoger.Add(testConsoleLogger);
-
-
-            FileLogger testFileLogger = new FileLogger();
-            testFileLogger.OutputTheLog("create file log " + DateTime.Now.ToString());
-            testFileLogger.OutputTheLog("create file log next time " + DateTime.Now.ToString());
-            aggregateCollectionLoger.Add(testFileLogger);
-
-            AggregateLogger aggregatelogger = new AggregateLogger(aggregateCollectionLoger);
-            aggregatelogger.OutputTheLog("test aggregate log");
-            aggregatelogger.OutputTheLog("test aggregate log 2");
+           
+            AggregateLogger aggregatelogger = new AggregateLogger(new ConsoleLogger(),new FileLogger());
+            aggregatelogger.Log("test aggregate log");
+            aggregatelogger.Log("test aggregate log 2");
 
 #if DEBUG
             Console.ReadKey();

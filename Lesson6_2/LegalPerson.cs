@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Lesson6_2
 {
@@ -13,6 +10,11 @@ namespace Lesson6_2
         public LegalPerson()
         {
             Id = DateTime.Now.ToLongTimeString();
+        }
+
+        public LegalPerson(string id)
+        {
+            this.Id = id;
         }
     }
 }
